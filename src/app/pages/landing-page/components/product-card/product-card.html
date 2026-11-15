@@ -1,0 +1,7 @@
+<div class="h-full rounded-lg shadow-lg p-5 flex flex-col gap-2 hover:cursor-pointer">
+    <img class="w-full aspect-square object-cover" src="{{ productData()!.imgUrl }}" alt="{{ productData()!.name }}">
+    <span class="self-start text-sm border rounded-full px-3 py-1">{{ productData()!.categoryName }}</span>
+    <h1 class="font-bold">{{ productData()!.name }}</h1>
+    <p class="line-clamp-3">{{ productData()!.description }}</p>
+    <h3 class="mt-auto">{{ productData()!.price | currency }}</h3>
+</div>
