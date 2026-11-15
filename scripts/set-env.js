@@ -5,17 +5,17 @@ require('dotenv').config({ quiet: true });
 const targetPath = './src/environments/environment.ts';
 const targetPathDev = './src/environments/environment.development.ts';
 
-const mapboxKey = process.env.MAPBOX_KEY?.trim();
+const apiBaseUrl = process.env.API_URL?.trim();
 
-if(!mapboxKey){
-    throw new Error('MAPBOX_KEY is not set');
+if(!apiBaseUrl){
+    throw new Error('API_URL is not set');
 }
 
 
 const envFileContent = `
 
 export const environment = {
-    mapboxKey: "${mapboxKey}"
+    apiBaseUrl: "${apiBaseUrl}"
 };
 
 `

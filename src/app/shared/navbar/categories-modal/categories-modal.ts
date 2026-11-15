@@ -11,6 +11,7 @@ export class CategoriesModal {
   private apiService = inject(ApiService);
   private document = inject(DOCUMENT);
   protected categories = signal<Category[]>([]);
+  
 
   constructor(){
     this.document.body.classList.add('overflow-hidden');

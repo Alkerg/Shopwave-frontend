@@ -3,18 +3,20 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Product } from "../interfaces/products.interface";
 import { Category } from "../interfaces/category.interface";
+import { environment } from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
     private http = inject(HttpClient);
+    private apiBaseUrl = environment.apiBaseUrl;
 
     getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>("https://api-ecommerce-production-3152.up.railway.app/api/v1/Products");
+        return this.http.get<Product[]>(`${this.apiBaseUrl}/v1/Products`);
     }
 
     getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>("https://api-ecommerce-production-3152.up.railway.app/api/v1/Categories");
+        return this.http.get<Category[]>(`${this.apiBaseUrl}/v1/Categories`);
     }
 }
