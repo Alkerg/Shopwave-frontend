@@ -1,11 +1,31 @@
 
 <navbar></navbar>
 
-<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-    @for (product of products(); track $index) {
-        <product-card [productData]="product"></product-card>
+<section class="container mx-auto">
+
+    @if(this.isLoadingProducts()){
+        <carousel-offers-skeleton></carousel-offers-skeleton>
+    }@else {
+        <carousel-offers></carousel-offers>
     }
+    
 </section>
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
+
+    @if(this.isLoadingProducts()){
+        @for(skeleton of skeletons; track $index){
+            <product-card-skeleton></product-card-skeleton>
+        }
+    }@else {
+        @for (product of products(); track $index) {
+            <product-card [productData]="product"></product-card>
+        }
+    }
+
+</section>
+
+
 
 
 <app-footer></app-footer>
