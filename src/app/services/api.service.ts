@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Product } from "../interfaces/products.interface";
 import { Category } from "../interfaces/category.interface";
 import { environment } from "../../environments/environment";
+import { UserLoginRequest, UserLoginResponse } from "../interfaces/user.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -18,5 +19,10 @@ export class ApiService {
 
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(`${this.apiBaseUrl}/v1/Categories`);
+    }
+
+    login(requestBody: UserLoginRequest): Observable<UserLoginResponse> {
+         
+        return this.http.post<UserLoginResponse>(`${this.apiBaseUrl}/v1/Users/Login`, requestBody);
     }
 }

@@ -1,0 +1,58 @@
+<div (click)="closeModal()" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" aria-hidden="true"></div>
+
+<!-- Contenedor del modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+
+    <section role="dialog" aria-modal="true" aria-labelledby="register-title"
+        class="pointer-events-auto relative w-full max-w-sm max-h-full overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
+
+        <!-- Boton de cierre -->
+        <button (click)="closeModal()" type="button" aria-label="Cerrar"
+            class="absolute top-3 right-3 rounded-full p-2 hover:bg-gray-100 hover:cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="none" stroke="#808080" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21l-9-9m0 0L3 3m9 9l9-9m-9 9l-9 9" />
+            </svg>
+        </button>
+
+        <h2 id="register-title" class="mb-6 text-center text-2xl font-bold">Crear cuenta</h2>
+
+        <form class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1">
+                <label for="register-username" class="text-sm font-medium text-gray-700">Username</label>
+                <input id="register-username" name="username" type="text" autocomplete="username"
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="register-email" class="text-sm font-medium text-gray-700">Email</label>
+                <input id="register-email" name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com"
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="register-password" class="text-sm font-medium text-gray-700">Contraseña</label>
+                <input id="register-password" name="password" type="password" autocomplete="new-password"
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="register-password-repeat" class="text-sm font-medium text-gray-700">Repetir contraseña</label>
+                <input id="register-password-repeat" name="passwordRepeat" type="password" autocomplete="new-password"
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <button type="submit"
+                class="mt-2 h-10 w-full rounded-lg bg-red-600 font-medium text-white hover:bg-red-700 hover:cursor-pointer">
+                Registrarse
+            </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-600">
+            ¿Ya tienes una cuenta?
+            <button (click)="openLogin()" type="button" class="font-medium text-red-600 hover:underline hover:cursor-pointer">
+                Inicia sesión
+            </button>
+        </p>
+
+    </section>
+</div>

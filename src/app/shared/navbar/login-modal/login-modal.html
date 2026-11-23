@@ -1,7 +1,49 @@
-<section>
-    asdf
-</section>
+<div (click)="closeModal()" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" aria-hidden="true"></div>
 
-<aside>
-    asdf
-</aside>
+<!-- Contenedor del modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+
+    <section role="dialog" aria-modal="true" aria-labelledby="login-title"
+        class="pointer-events-auto relative w-full max-w-sm max-h-full overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
+
+        <!-- Boton de cierre -->
+        <button (click)="closeModal()" type="button" aria-label="Cerrar"
+            class="absolute top-3 right-3 rounded-full p-2 hover:bg-gray-100 hover:cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="none" stroke="#808080" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21l-9-9m0 0L3 3m9 9l9-9m-9 9l-9 9" />
+            </svg>
+        </button>
+
+        <h2 id="login-title" class="mb-6 text-center text-2xl font-bold">Iniciar sesión</h2>
+
+        <form class="flex flex-col gap-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="flex flex-col gap-1">
+                <label for="login-email" class="text-sm font-medium text-gray-700">Email</label>
+                <input formControlName="email" id="login-email" name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com" required
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label for="login-password" class="text-sm font-medium text-gray-700">Contraseña</label>
+                <input formControlName="password" id="login-password" name="password" type="password" autocomplete="current-password" required
+                    class="h-10 w-full rounded-lg border border-gray-300 px-3 focus:outline-1 focus:outline-blue-400">
+            </div>
+
+            <button type="submit"
+                class="mt-2 h-10 w-full rounded-lg bg-red-600 font-medium text-white hover:bg-red-700 hover:cursor-pointer">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-600">
+            ¿No tienes una cuenta?
+            <button (click)="openRegister()" type="button" class="font-medium text-red-600 hover:underline hover:cursor-pointer">
+                Regístrate
+            </button>
+        </p>
+
+    </section>
+
+
+
+</div>
