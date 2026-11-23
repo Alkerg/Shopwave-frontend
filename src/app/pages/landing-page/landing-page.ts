@@ -3,7 +3,6 @@ import { Navbar } from '../../shared/navbar/navbar';
 import { Footer } from '../../shared/footer/footer';
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../interfaces/products.interface';
-import { CurrencyPipe } from '@angular/common';
 import { ProductCard } from './components/product-card/product-card';
 
 @Component({

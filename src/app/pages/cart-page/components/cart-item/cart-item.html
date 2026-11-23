@@ -1,0 +1,39 @@
+<article class="w-full bg-white shadow-md rounded-lg p-4 sm:p-5">
+
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+
+        <div class="flex flex-1 gap-4 min-w-0">
+            <!-- Miniatura del producto -->
+            <img src="{{itemData()?.imgUrl}}" alt=""
+                class="size-18 sm:size-20 shrink-0 rounded-md object-cover border border-gray-200">
+
+            <div class="flex flex-col gap-1 min-w-0">
+                <!-- Nombre del producto -->
+                <h2 class="text-sm sm:text-base font-medium leading-snug line-clamp-2">
+                    {{itemData()!.name}}
+                </h2>
+
+                <div class="flex items-baseline gap-2">
+                    <!-- Precio original -->
+                    <span class="text-sm text-gray-400 line-through">{{itemData()?.price | currency:'PEN':'S/':'1.2-2':'es-PE'}}</span>
+                    <!-- Precio en oferta -->
+                    <span class="text-lg font-bold">{{itemData()!.discountedPrice | currency:'PEN':'S/':'1.2-2':'es-PE'}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selector de cantidad -->
+        <div class="flex shrink-0 self-end sm:self-center">
+            <button (click)="addOrRestCuantity(-1)" class="px-4 py-2 hover:cursor-pointer border border-gray-300 rounded-l-md hover:bg-gray-100">-</button>
+            <input (change)="setCuantityInput($event)" min="1" max="99" type="number" value={{itemData()?.cuantity}} class="[&::-webkit-inner-spin-button]:appearance-none py-2 w-10 text-center border-t border-b border-gray-300">
+            <button (click)="addOrRestCuantity(1)" class="px-4 py-2 hover:cursor-pointer border border-gray-300 rounded-r-md hover:bg-gray-100">+</button>
+        </div>
+
+    </div>
+
+    <!-- Eliminar producto -->
+    <div class="mt-3 pt-3 border-t border-gray-100">
+        <button class="text-sm text-red-500 hover:text-red-600 hover:underline hover:cursor-pointer">Eliminar</button>
+    </div>
+
+</article>

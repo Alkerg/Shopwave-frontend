@@ -1,1 +1,41 @@
-<p>cart-page works!</p>
+<navbar></navbar>
+
+<main class="mx-auto w-full max-w-7xl px-3 sm:px-6 my-10">
+
+    <h1 class="text-2xl font-bold mb-6">Tu carrito</h1>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+
+        <!-- Lista de productos -->
+        <section class="flex flex-col gap-4 w-full">
+
+            @for(item of cartItems(); track $index){
+                <cart-item [itemData]="item"></cart-item>
+            }
+
+        </section>
+
+        <!-- Resumen de la compra -->
+        <aside class="w-full bg-white p-5 border border-gray-300 rounded-lg lg:sticky lg:top-6">
+            <h2 class="text-xl font-bold mb-4">Resumen de la compra</h2>
+
+            <div class="flex flex-col gap-2 text-sm">
+                <div class="flex justify-between">
+                    <p class="font-bold">Productos</p>
+                    <span>$19.99</span>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-bold">Descuentos</p>
+                    <span class="text-green-600">-$3.00</span>
+                </div>
+                <div class="flex justify-between pt-3 mt-1 border-t border-gray-200 text-base">
+                    <p class="font-bold">Total</p>
+                    <span class="font-bold">$16.99</span>
+                </div>
+            </div>
+
+            <button (click)="this.showCartItems()" class="w-full mt-4 rounded py-2 bg-red-600 text-white cursor-pointer">Pagar</button>
+        </aside>
+    </div>
+
+</main>

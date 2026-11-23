@@ -2,6 +2,10 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeEsPe from '@angular/common/locales/es-PE';
+
+registerLocaleData(localeEsPe, 'es-PE');
 
 export const appConfig: ApplicationConfig = {
   providers: [

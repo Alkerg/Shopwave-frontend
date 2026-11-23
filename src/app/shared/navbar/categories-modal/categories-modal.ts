@@ -1,4 +1,4 @@
-import { Component, DestroyRef, DOCUMENT, inject, signal } from '@angular/core';
+import { Component, DestroyRef, DOCUMENT, HostListener, inject, input, output } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { Category } from '../../../interfaces/category.interface';
 
@@ -8,20 +8,21 @@ import { Category } from '../../../interfaces/category.interface';
   templateUrl: './categories-modal.html',
 })
 export class CategoriesModal {
-  private apiService = inject(ApiService);
   private document = inject(DOCUMENT);
-  protected categories = signal<Category[]>([]);
+  closeModalOutput = output<boolean>();
+  categories = input<Category[]>([]);
   
 
   constructor(){
     this.document.body.classList.add('overflow-hidden');
+
     inject(DestroyRef).onDestroy(() => {
       this.document.body.classList.remove('overflow-hidden');
     });
+  }
 
-    this.apiService.getCategories().subscribe((categories) => {
-      this.categories.set(categories);
-    });
+  closeModal(){
+    this.closeModalOutput.emit(true);
   }
 
 }

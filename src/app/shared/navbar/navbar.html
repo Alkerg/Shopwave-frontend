@@ -2,7 +2,7 @@
     
     <div class="order-1 sm:flex-1 flex flex-row gap-1 sm:gap-4 items-center">
         
-        <b>SHOPWAVE</b>
+        <b routerLink="/" class="text-md font-bold lg:text-xl cursor-pointer">SHOPWAVE</b>
         
         <!-- Categorias -->
         <button (click)="toggleCategoriesModal()" class="hidden lg:flex flex-row items-center gap-2 border rounded-lg px-3 py-2 bg-red-600 text-white text-sm hover:cursor-pointer">
@@ -14,7 +14,7 @@
             Categorías
         </button>
 
-        <button class="lg:hidden flex-row items-center gap-2 px-2 py-2 text-sm hover:cursor-pointer hover:rounded-full hover:bg-gray-200">
+        <button (click)="toggleCategoriesModal()" class="lg:hidden flex-row items-center gap-2 px-2 py-2 text-sm hover:cursor-pointer hover:rounded-full hover:bg-gray-200">
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 16 16">
                 <path d="M0 0h16v16H0z" fill="none" />
                 <path fill="none" stroke="#808080" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" />
@@ -48,7 +48,7 @@
         </button>
 
         <!-- Carrito de compras -->
-        <button class="relative hover:cursor-pointer hover:rounded-full hover:bg-gray-200 px-2 py-2">
+        <button routerLink="/cart" class="relative hover:cursor-pointer hover:rounded-full hover:bg-gray-200 px-2 py-2">
             <span class="absolute -top-1 -right-1 flex items-center justify-center min-w-5 h-5 px-1 rounded-full bg-red-500 text-white text-xs font-bold">
                 0
             </span>
@@ -66,7 +66,7 @@
     </div>
 
     @if(categoriesModalOpen()) {
-        <categories-modal></categories-modal>
+        <categories-modal [categories]="categories()" (closeModalOutput)="toggleCategoriesModal()"></categories-modal>
     }
 
 </nav>
